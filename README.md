@@ -1,7 +1,9 @@
 UserInterface.java
 ==================
-import java.util.Scanner;
+import java.io.DataInputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.Scanner;
 public class UserInterface 
 {
     Scanner s = new Scanner(System.in);
@@ -12,12 +14,12 @@ public class UserInterface
 		int response = 0;
 		while (true)
 		{
-			System.out.println("Please select a number"
-                                + "1. Sell a Painting"
-                                + "2. Buy a Painting"
-                                + "3. Add/Update/Delete a File"
-                                + "4. Print a Report"
-                                + "5. Quit");
+			System.out.println("Please select a number\n"
+                                + "1. Sell a Painting\n"
+                                + "2. Buy a Painting\n"
+                                + "3. Add/Update/Delete a File\n"
+                                + "4. Print a Report\n"
+                                + "5. Quit\n");
 			response = s.nextInt();
 			if(response == 5) break;
 			if(response == 1) sellAPainting();
@@ -29,32 +31,21 @@ public class UserInterface
 	}
 
     //Desc: Prints the menu for sell a painting
-    public static void sellAPainting()
+    public static void sellAPainting() //not keep
     {
         Scanner s = new Scanner(System.in);
         System.out.println("What do you want to sell? "
                 + "Enter Artist Last name and painting title");
         String lname = s.nextLine();
         String title = s.nextLine();
-        BoughtPainting b = findObject(lname,title);
+        BoughtPainting b = new BoughtPainting(); //this doesn't do anything
         System.out.println(b);
         System.out.println("Confirm that this is the painting "
                 + "you want to sell by entering y/n");
         String response = s.nextLine();
         if (response.matches("y"))
         {
-            SoldPainting sold = new SoldPainting();
-            System.out.println("Please add the name of buyer: ");
-            String name = s.nextLine();
-            System.out.println("Please add the address of buyer: ");
-            String address = s.nextLine();
-            System.out.println("Please add the actual selling price: ");
-            double price = s.nextDouble();
-            sold.setDate(); //add current date
-            sold.setNameOfBuyer(name);
-            sold.setAddressOfBuyer(address);
-            sold.setActualPurchasePrice(price);
-            sold.save();
+
         }
         if (response.matches("n")) 
             System.out.println("Painting not sold.");
@@ -62,7 +53,7 @@ public class UserInterface
     }
     
     //Desc: The UI for the selection Buy a Painting
-    public static void buyAPainting()
+    public static void buyAPainting() //keep
     {
         Scanner s = new Scanner(System.in);
         while (true)
@@ -92,13 +83,9 @@ public class UserInterface
     //Post: The user will have viewed the suggested maximum price for 
     //the painting they want to buy. If they chose to buy it, the files are 
     //now updated accordingingly. 
-    public static void executeDetermineMasterpiecePrice()
+    public static void executeDetermineMasterpiecePrice() //dont keep
     {
-    	Painting toBuy = getValuesFromUser();
-    	if (userBuyChoice(determineMasterpiecePrice())) 
-    	addRecordBoughtPaintingFile(toBuy);
-    	else
-    	go back to menu 
+
     }
     
     //Desc: prompt user to input the artist first name, last name, area of 
@@ -107,7 +94,7 @@ public class UserInterface
     //Post: The artist first name, last name, area of painting, title of 
     //work, date of work, medium and subject of painting user wants to buy have 
     //values input by the user
-    public static Painting getValuesFromUser() 
+    public static BoughtPainting getValuesFromUser() //dont keep
     {
     	Scanner s = new Scanner (System.in);
         System.out.println("Enter Artist First name: ");
@@ -118,19 +105,22 @@ public class UserInterface
     	String title = s.nextLine();
         System.out.println("Enter date painting was created: ");
     	String dateOfWork = s.nextLine();
+        Date date = new Date(dateOfWork);
         System.out.println("Enter painting medium: ");
     	String medium = s.nextLine();
         System.out.println("Enter painting subject: ");
     	String subject = s.nextLine();
         System.out.println("Enter painting width: ");
-        String width = s.nextLine();
+        String w = s.nextLine();
+        Double width = new Double(w);
         System.out.println("Enter painting height: ");
-        String height = s.nextLine();
-        Painting buy = new Painting ();
+        String h = s.nextLine();
+        Double height = new Double(h);
+        BoughtPainting buy = new BoughtPainting ();
         buy.setArtistFirstName(firstName);
-        buy.setArtistLastName(lastName);
+        buy.setArtistsLastName(lastName);
         buy.setTitleOfWork(title);
-        buy.setDateOfWork(dateOfWork);
+        buy.setDateofWork(date);
         buy.setMedium(medium);
         buy.setSubject(subject);
         buy.setWidth(width);
@@ -149,12 +139,9 @@ public class UserInterface
     //Post: The user will have viewed the suggested maximum price for 
     //the painting they want to buy. If they chose to buy it, the files are 
     //now updated accordingingly. 
-    public static void executeDetermineOtherWorkPrice()
+    public static void executeDetermineOtherWorkPrice() //dont keep
     {
-    	Painting toBuy = getValuesFromUser();
-    	if (userBuyChoice(determineOtherWorkPrice()))
-            addRecordBoughtPaintingFile(toBuy);
-        //else go back to menu
+
     }
 
 
@@ -168,13 +155,9 @@ public class UserInterface
     //Post: The user will have viewed the suggested maximum price for 
     //the painting they want to buy. If they chose to buy it, the files are 
     //now updated accordingingly. 
-    public static void executeDetermineMasterworkPrice()
+    public static void executeDetermineMasterworkPrice() //dont keep
     {
-    	Painting toBuy = getValuesFromUser()
-    	if (userBuyChoice(determineMasterworkPrice())
-                addRecordBoughtPaintingFile(toBuy);
-    	else
-    	go back to menu 
+
     }
     
 
@@ -183,7 +166,7 @@ public class UserInterface
     //      as a true or false value
     //Pre: the argument must be a double value
     //Return: a boolean value based on the user’s input
-    public static boolean userBuyChoice(double d)
+    public static boolean userBuyChoice(double d) //dont keep
     {
     	System.out.println("The price is" +d +". Do you want to buy? y/n");
     	Scanner s = new Scanner(System.in);
@@ -198,38 +181,44 @@ public class UserInterface
     //current painting that the user just bought
     //Pre: the BoughtPainting.txt file must exist
     //Post: The bought paintings file is updated
-    public static void addRecordBoughtPaintingFile(Painting toBuy) 
+    public static void addRecordBoughtPaintingFile(Painting toBuy) //dont keep
     {
-        Scanner s = new Scanner (System.in);
-        BoughtPainting newR = toBuy;
-	System.out.println ("Enter Name of Buyer: ");
-	String name = s.nextLine();
-	newR.setNameOfBuyer(name);
-		
-	System.out.println ("Enter Buyers Address: ");
-	String address = s.nextLine();
-	newR.setAddressOfSeller(address);
 
-	System.out.println ("Enter Date of Purchace: ");
-	String dateOfSale = s.nextLine();
-	//String to date
-	newR.setDateOfSale(dateOfSale);
-		
- 	newR.setSuggestedMaximumPurchasePrice(getSuggestedMaximumPurchasePrice());
-
-	newR.save();
     }
 
     //Desc: Displays the menu for adding, updating or deleting files
     public static void changeFiles()
     {  
        Scanner s = new Scanner (System.in);
-       print("Which file would you like to change?"
-               + "1. ArtistFile (update add or delete) call boundary class"
+       System.out.println("Which file would you like to change?"
+               + "1. ArtistFile"
                + "2. PaintingsSold");
         int response = s.nextInt();
-        if(response ==1)updateArtistFile();
-        if(response ==2)updatePaintingFile();
+        if(response ==1)
+        {
+            System.out.println("What do you want to change/n"
+                    + "1. Artist first name/n"
+                    + "2. Artist last name/n"
+                    + "3. Artist Fashionability Value");
+            response = s.nextInt();
+            //if(response ==1) Artist.updateArtistsFirstName();
+        }
+        if(response ==2)
+        {
+            System.out.println("What do you want to change/n"
+                    + "1. Artist first name/n"
+                    + "2. Artist last name/n"
+                    + "3. Title of Work /n"
+                    + "4. Classification/n"
+                    + "5. Date of Work/n"
+                    + "6. Height/n"
+                    + "7. Width/n"
+                    + "8. Medium/n"
+                    + "9. Subject/n"
+                    + "10. Suggested Maximum Purchase Price");
+            response = s.nextInt();
+            //if (response ==1) Painting.updateArtistsFirstName();
+        }
 
     }
     //Desc: Displays the menu for different reports
@@ -243,11 +232,87 @@ public class UserInterface
                 + "Please enter a number 1, 2 or 3.");
         int response = 0;
         response = s.nextInt();
-        if(response ==1)
+       /* if(response ==1)
             ProduccePaintingsPurchasedInThePastYearReport.printReport();
         if(response==2)
             ProducePaintingsSoldInThePastYearReport.printReport();
         if(response==3)
-            ProducePaintingsExceedingTargetSellingPrice.printReport();
+            ProducePaintingsExceedingTargetSellingPrice.printReport();**/
     }
+    public static void main (String[] args)
+    {
+        UserInterface h = new UserInterface();
+    }
+    
+      public static char getChar()
+  //
+  // the following method returns the first character entered on the keyboard
+  //
+  {
+
+     char ch = '\n';
+
+     try
+     {
+
+        InputStreamReader in = new InputStreamReader(System.in);
+        ch = (char)in.read();
+
+     }
+     catch (Exception e)
+     {
+
+        System.out.println("Error: " + e.toString());
+
+     }
+
+     return ch;
+
+  }  // getChar
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  public static int getInt()
+  //
+  // the following method returns an integer entered from the keyboard
+  //
+  {
+
+     int res;
+     String strInt;
+
+     strInt = getString();
+     res = (short)Integer.parseInt(strInt);
+
+     return res;
+
+  } // getInt
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  public static String getString()
+  //
+  // the following method returns a string entered from the keyboard
+  //
+  {
+     String str = "_";
+
+     try
+     {
+
+        DataInputStream MyInput = new DataInputStream(System.in);
+        str = MyInput.readLine();
+
+     }
+     catch (Exception e)
+     {
+
+        System.out.println("Error: " + e.toString());
+
+     }
+
+     return str;
+
+  }  // getString
+  
 }

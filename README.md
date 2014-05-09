@@ -12,13 +12,16 @@ public class UserInterface
 	{
 		int response = 0;
 		while (true)
-		{
-			System.out.println("Please select a number\n"
-                                + "1. Sell a Painting\n"
-                                + "2. Buy a Painting\n"
-                                + "3. Add/Update/Delete a File\n"
-                                + "4. Print a Report\n"
-                                + "5. Quit\n");
+                {
+		
+                        System.out.println ("\t             WELCOME -- MAIN MENU\n\n");
+			System.out.println ("\t         Oglesby Art Pricing System\n\n");
+			System.out.println("\t      Please select a number\n"
+                                + "\t       1. Sell a Painting\n"
+                                + "\t       2. Buy a Painting\n"
+                                + "\t       3. Add/Update/Delete a File\n"
+                                + "\t       4. Print a Report\n"
+                                + "\t       5. Quit\n");
 			response = s.nextInt();
 			if(response == 5) break;
 			if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
@@ -33,13 +36,17 @@ public class UserInterface
     public static void buyAPainting() //keep
     {
         Scanner s = new Scanner(System.in);
-        while (true)
-        {   int response = 0;
-            System.out.println ("What type of painting do you want to buy?"
-                    + "1. Masterpiece"
-                    + "2. Masterwork"
-                    + "3. Other work"
-                    + "Enter number 1, 2 or 3");
+        while (true)  
+        {   
+            clearScreen();
+            int response = 0;
+            System.out.println ("\t             BUY A PAINTING\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println ("\t     What type of painting do you want to buy?\n"
+                    + "\t       1. Masterpiece\n"
+                    + "\t       2. Masterwork\n"
+                    + "\t       3. Other work\n"
+                    + "\t       Enter number 1, 2 or 3");
             response = s.nextInt();
            // if(response == 1) executeDetermineMasterpiecePrice();
             //if(response == 2) executeDetermineMasterworkPrice();
@@ -54,11 +61,14 @@ public class UserInterface
 
     //Desc: Displays the menu for adding, updating or deleting files
     public static void changeFiles()
-    {  
-       Scanner s = new Scanner (System.in);
-       System.out.println("Which file would you like to change?"
-               + "1. ArtistFile"
-               + "2. PaintingsSold");
+    {
+        clearScreen();
+        Scanner s = new Scanner (System.in);
+        System.out.println ("\t             CHANGE A FILE\n\n");
+        System.out.println ("\t         Oglesby Art Pricing System\n\n");
+        System.out.println("\t      Which file would you like to change?\n"
+               + "\t        1. ArtistFile\n"
+               + "\t        2. PaintingsSold");
         int response = s.nextInt();
         if(response ==1) UpdateArtistFile.updateArtistFile();
         if(response ==2) UpdateSoldPaintingsFile.addSoldPaintingFile();
@@ -67,12 +77,15 @@ public class UserInterface
     //Desc: Displays the menu for different reports
     public static void printReport()
     {
+        clearScreen();
         Scanner s = new Scanner (System.in);
-        System.out.println("Which report would you like to print? "
-                + "1. Paintings Purchased In The Past Year Report"
-                + "2. Paintings Sold In The Past Year Report"
-                + "3. Paintings Exceeding Target Selling Price Report"
-                + "Please enter a number 1, 2 or 3.");
+        System.out.println ("\t             PRINT A REPORT\n\n");
+        System.out.println ("\t         Oglesby Art Pricing System\n\n");
+        System.out.println("\t      Which report would you like to print? \n"
+                + "\t       1. Paintings Purchased In The Past Year Report\n"
+                + "\t       2. Paintings Sold In The Past Year Report\n"
+                + "\t       3. Paintings Exceeding Target Selling Price Report\n"
+                + "\t       Please enter a number 1, 2 or 3.");
         int response = 0;
         response = s.nextInt();
        /* if(response ==1)

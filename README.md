@@ -95,10 +95,6 @@ public class UserInterface
         if(response==3)
             ProducePaintingsExceedingTargetSellingPrice.printReport();**/
     }
-    public static void main (String[] args)
-    {
-        UserInterface h = new UserInterface();
-    }
     
       public static char getChar()
   //

@@ -19,15 +19,19 @@ public class UserInterface
 			System.out.println("\t      Please select a number\n"
                                 + "\t       1. Sell a Painting\n"
                                 + "\t       2. Buy a Painting\n"
-                                + "\t       3. Add/Update/Delete a File\n"
-                                + "\t       4. Print a Report\n"
-                                + "\t       5. Quit\n");
+                                + "\t       3. Add a File\n"
+                                + "\t       4. Update a File\n"
+                                + "\t       5. Delete a File\n"
+                                + "\t       6. Print a Report\n"
+                                + "\t       7. Quit\n");
 			response = s.nextInt();
-			if(response == 5) break;
+			if(response == 7) break;
 			if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
 			if(response == 2) buyAPainting();
-			if (response == 3) changeFiles();
-			if (response == 4) printReport();
+                        if (response == 3) addFiles();
+			if (response == 4) changeFiles();
+                        if(response == 5) deleteFiles();
+			if (response == 6) printReport();
 		}
 		System.out.println("Program completed");
 	}
@@ -56,7 +60,27 @@ public class UserInterface
         
     }
 
-    
+    public static void addFiles()
+    {
+        clearScreen();
+        Scanner s = new Scanner (System.in);
+        System.out.println ("\t             ADDz A FILE\n\n");
+        System.out.println ("\t         Oglesby Art Pricing System\n\n");
+        System.out.println("\t      Which file would you like to add?\n"
+               + "\t        1. ArtistFile\n"
+               + "\t        2. AuctionFile");
+        int response = s.nextInt();
+        if(response ==1) 
+        {
+            Artist a = new Artist();
+            a.add();
+        }
+        if(response ==2) 
+        {
+         AuctionPainting auct = new AuctionPainting();
+         auct.add();
+        }
+    }
    
 
     //Desc: Displays the menu for adding, updating or deleting files
@@ -68,11 +92,65 @@ public class UserInterface
         System.out.println ("\t         Oglesby Art Pricing System\n\n");
         System.out.println("\t      Which file would you like to change?\n"
                + "\t        1. ArtistFile\n"
-               + "\t        2. PaintingsSold");
-        int response = s.nextInt();
-        if(response ==1) UpdateArtistFile.updateArtistFile();
-        if(response ==2) UpdateSoldPaintingsFile.addSoldPaintingFile();
+               + "\t        2. GalleryPaintings\n"
+                + "\t       3. AuctionPaintings");
+        while (true)
+        {
+            int response = s.nextInt();
+            if(response ==1) UpdateArtistFile.updateArtistFile();
+            if(response ==2) 
+            {  
+                System.out.println("What do you want to change about the panting file?"
+                        + "\t   1. Artist First Name"
+                        + "\t   2. Artist Last Name"
+                        + "\t   3. Title of Work"
+                        + "\t   4. Classification"
+                        + "\t   5. Date of Work"
+                        + "\t   6. Height"
+                        + "\t   7. Width"
+                        + "\t   8. Medium"
+                        + "\t   9. Subject"
+                        + "\t   10. Date of Purchase"
+                        + "\t   11. Name of Seller"
+                        + "\t   12. Address of Seller"
+                        + "\t   13. Actual Purchase Price"
+                        + "\t   14. Target selling price"
+                        + "\t   15. Suggested Maximum Purchase Price");
+            }
+            if (response ==3)
+            {
+            
+            }
+            else System.out.println("Please enter a number 1-4 and press <ENTER>");
+        }
 
+    }
+    public static void deleteFiles()
+    {
+        clearScreen();
+        Scanner s = new Scanner (System.in);
+        System.out.println ("\t             DELETE A FILE\n\n");
+        System.out.println ("\t         Oglesby Art Pricing System\n\n");
+        System.out.println("\t      Which file would you like to delete from?\n"
+               + "\t        1. ArtistFile\n"
+               + "\t        2. GalleryPaintingFile\n"
+                + "\t       3. AuctionFile");
+        int response = s.nextInt();
+        if(response ==1)
+        {
+            Artist a = new Artist();
+            a.delete();
+        }
+        if(response ==2) 
+        {
+            SoldPainting sold = new SoldPainting();
+            sold.delete();
+        }
+        if (response ==3)
+        {
+            AuctionPainting auct = new AuctionPainting();
+            auct.delete();
+        }
     }
     //Desc: Displays the menu for different reports
     public static void printReport()

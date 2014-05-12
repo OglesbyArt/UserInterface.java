@@ -13,52 +13,29 @@ public class UserInterface
 		int response = 0;
 		while (true)
                 {
-		
-                        System.out.println ("\t             WELCOME -- MAIN MENU\n\n");
-			System.out.println ("\t         Oglesby Art Pricing System\n\n");
-			System.out.println("\t      Please select a number\n"
-                                + "\t       1. Sell a Painting\n"
-                                + "\t       2. Buy a Painting\n"
-                                + "\t       3. Add a File\n"
-                                + "\t       4. Update a File\n"
-                                + "\t       5. Delete a File\n"
-                                + "\t       6. Print a Report\n"
-                                + "\t       7. Quit\n");
-			response = s.nextInt();
-			if(response == 7) break;
-			if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
-			if(response == 2) buyAPainting();
-                        if (response == 3) addFiles();
-			if (response == 4) changeFiles();
-                        if(response == 5) deleteFiles();
-			if (response == 6) printReport();
+                    BoughtPainting b = new BoughtPainting();
+                    System.out.println ("\t             WELCOME -- MAIN MENU\n\n");
+                    System.out.println ("\t         Oglesby Art Pricing System\n\n");
+                    System.out.println("\t      Please select a number\n"
+                            + "\t       1. Sell a Painting\n"
+                            + "\t       2. Buy a Painting\n"
+                            + "\t       3. Add a File\n"
+                            + "\t       4. Update a File\n"
+                            + "\t       5. Delete a File\n"
+                            + "\t       6. Print a Report\n"
+                            + "\t       7. Quit\n");
+                    response = s.nextInt();
+                    if(response == 7) break;
+                    if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
+                    if(response == 2) b.readInRecord();
+                    if (response == 3) addFiles();
+                    if (response == 4) changeFiles();
+                    if(response == 5) deleteFiles();
+                    if (response == 6) printReport();
 		}
 		System.out.println("Program completed");
 	}
-    
-    //Desc: The UI for the selection Buy a Painting
-    public static void buyAPainting() //keep
-    {
-        Scanner s = new Scanner(System.in);
-        while (true)  
-        {   
-            clearScreen();
-            int response = 0;
-            System.out.println ("\t             BUY A PAINTING\n\n");
-            System.out.println ("\t         Oglesby Art Pricing System\n\n");
-            System.out.println ("\t     What type of painting do you want to buy?\n"
-                    + "\t       1. Masterpiece\n"
-                    + "\t       2. Masterwork\n"
-                    + "\t       3. Other work\n"
-                    + "\t       Enter number 1, 2 or 3");
-            response = s.nextInt();
-           // if(response == 1) executeDetermineMasterpiecePrice();
-            //if(response == 2) executeDetermineMasterworkPrice();
-            //if (response == 3) executeDetermineOtherWorkPrice();
-            //else System.out.println("Please enter a number 1, 2 or 3");
-        }
-        
-    }
+
 
     public static void addFiles()
     {

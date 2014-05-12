@@ -87,41 +87,37 @@ public class UserInterface
     public static void changeFiles()
     {
         clearScreen();
-        Scanner s = new Scanner (System.in);
+        boolean done = false;
         System.out.println ("\t             CHANGE A FILE\n\n");
         System.out.println ("\t         Oglesby Art Pricing System\n\n");
         System.out.println("\t      Which file would you like to change?\n"
-               + "\t        1. ArtistFile\n"
-               + "\t        2. GalleryPaintings\n"
-                + "\t       3. AuctionPaintings");
-        while (true)
+                + "\t       1. ArtistFile\n"
+                + "\t       2. AuctionPaintings\n"
+                + "\t       3. BoughtPaintings\n"
+                + "\t       4. SoldPaintings"
+                + "\t       5. Exit to Main Menu");
+        while (!done)
         {
-            int response = s.nextInt();
-            if(response ==1) UpdateArtistFile.updateArtistFile();
-            if(response ==2) 
-            {  
-                System.out.println("What do you want to change about the panting file?"
-                        + "\t   1. Artist First Name"
-                        + "\t   2. Artist Last Name"
-                        + "\t   3. Title of Work"
-                        + "\t   4. Classification"
-                        + "\t   5. Date of Work"
-                        + "\t   6. Height"
-                        + "\t   7. Width"
-                        + "\t   8. Medium"
-                        + "\t   9. Subject"
-                        + "\t   10. Date of Purchase"
-                        + "\t   11. Name of Seller"
-                        + "\t   12. Address of Seller"
-                        + "\t   13. Actual Purchase Price"
-                        + "\t   14. Target selling price"
-                        + "\t   15. Suggested Maximum Purchase Price");
-            }
-            if (response ==3)
+            char response = getChar();
+            switch (response)
             {
-            
+                case '1':
+                    UpdateArtistFile.updateArtistFile();
+                    break;
+                case '2':
+                    UpdateAuctionFile.updateAuctionPainting();
+                case '3':
+                    UpdateGalleryFile.updateBoughtPainting();
+                case '4':
+                    UpdateGalleryFile.updateSoldPainting();
+                case '5':
+                    done = true;
+                    break;
+                case '\n':
+                    done = true;
+                    break;
             }
-            else System.out.println("Please enter a number 1-4 and press <ENTER>");
+            
         }
 
     }

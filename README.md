@@ -16,7 +16,7 @@ public class UserInterface
                     BoughtPainting b = new BoughtPainting();
                     System.out.println ("\t             WELCOME -- MAIN MENU\n\n");
                     System.out.println ("\t         Oglesby Art Pricing System\n\n");
-                    System.out.println("\t      Please select a number\n"
+                    System.out.println("\t      Please select a number 1-7\n"
                             + "\t       1. Sell a Painting\n"
                             + "\t       2. Buy a Painting\n"
                             + "\t       3. Add a File\n"
@@ -24,9 +24,13 @@ public class UserInterface
                             + "\t       5. Delete a File\n"
                             + "\t       6. Print a Report\n"
                             + "\t       7. Quit\n");
+                    while (!s.hasNextInt()) {
+                        System.out.println("That's not a number!");
+                        s.next(); // this is important!
+                        }
                     response = s.nextInt();
                     if(response == 7) break;
-                    if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
+                    if(response == 1) UpdateGalleryFile.addSoldPaintingFile();
                     if(response == 2) buyAPainting();
                     if (response == 3) addFiles();
                     if (response == 4) changeFiles();

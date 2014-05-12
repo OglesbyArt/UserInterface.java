@@ -27,7 +27,7 @@ public class UserInterface
                     response = s.nextInt();
                     if(response == 7) break;
                     if(response == 1) UpdateSoldPaintingsFile.addSoldPaintingFile();
-                    if(response == 2) b.readInRecord();
+                    if(response == 2) buyAPainting();
                     if (response == 3) addFiles();
                     if (response == 4) changeFiles();
                     if(response == 5) deleteFiles();
@@ -35,7 +35,30 @@ public class UserInterface
 		}
 		System.out.println("Program completed");
 	}
-
+    
+    //Desc: The UI for the selection Buy a Painting
+    public static void buyAPainting() //keep
+    {
+        Scanner s = new Scanner(System.in);
+        while (true)  
+        {   
+            clearScreen();
+            int response = 0;
+            System.out.println ("\t             BUY A PAINTING\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println ("\t     What type of painting do you want to buy?\n"
+                    + "\t       1. Masterpiece\n"
+                    + "\t       2. Masterwork\n"
+                    + "\t       3. Other work\n"
+                    + "\t       Enter number 1, 2 or 3");
+            response = UserInterface.getInt();
+            //if(response == 1) DetermineMasterworkPrice.executeDetermineMasterpiecePrice();
+            //if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
+            //if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
+            //else System.out.println("Please enter a number 1, 2 or 3");
+        }
+        
+    }
 
     public static void addFiles()
     {
@@ -139,9 +162,8 @@ public class UserInterface
                 + "\t       Please enter a number 1, 2 or 3.");
         int response = 0;
         response = s.nextInt();
-       /* if(response ==1)
-            ProduccePaintingsPurchasedInThePastYearReport.printReport();
-        if(response==2)
+        if(response ==1)PurchasedReport.printReport();
+       /* if(response==2)
             ProducePaintingsSoldInThePastYearReport.printReport();
         if(response==3)
             ProducePaintingsExceedingTargetSellingPrice.printReport();**/

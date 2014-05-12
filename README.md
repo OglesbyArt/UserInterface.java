@@ -94,7 +94,7 @@ public class UserInterface
                 + "\t       1. ArtistFile\n"
                 + "\t       2. AuctionPaintings\n"
                 + "\t       3. BoughtPaintings\n"
-                + "\t       4. SoldPaintings"
+                + "\t       4. SoldPaintings\n"
                 + "\t       5. Exit to Main Menu");
         while (!done)
         {
@@ -130,7 +130,7 @@ public class UserInterface
         System.out.println("\t      Which file would you like to delete from?\n"
                + "\t        1. ArtistFile\n"
                + "\t        2. GalleryPaintingFile\n"
-                + "\t       3. AuctionFile");
+               + "\t        3. AuctionFile");
         int response = s.nextInt();
         if(response ==1)
         {

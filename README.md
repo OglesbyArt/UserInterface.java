@@ -52,10 +52,10 @@ public class UserInterface
                     + "\t       3. Other work\n"
                     + "\t       Enter number 1, 2 or 3");
             response = UserInterface.getInt();
-            //if(response == 1) DetermineMasterworkPrice.executeDetermineMasterpiecePrice();
-            //if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
-            //if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
-            //else System.out.println("Please enter a number 1, 2 or 3");
+            if(response == 1) DetermineMasterpiecePrice.executeDetermineMasterpiecePrice();
+            if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
+            if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
+            else System.out.println("Please enter a number 1, 2 or 3");
         }
         
     }

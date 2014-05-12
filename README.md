@@ -24,11 +24,13 @@ public class UserInterface
                             + "\t       5. Delete a File\n"
                             + "\t       6. Print a Report\n"
                             + "\t       7. Quit\n");
-                    while (!s.hasNextInt()) {
-                        System.out.println("That's not a number!");
-                        s.next(); // this is important!
-                        }
+                    while (!s.hasNext("[1234567]")) 
+                    {
+                        System.out.println("Please enter a Number 1-7.");
+                        s.next(); 
+                    }
                     response = s.nextInt();
+
                     if(response == 7) break;
                     if(response == 1) UpdateGalleryFile.addSoldPaintingFile();
                     if(response == 2) buyAPainting();
@@ -37,7 +39,7 @@ public class UserInterface
                     if(response == 5) deleteFiles();
                     if (response == 6) printReport();
 		}
-		System.out.println("Program completed");
+		System.out.println("GOODBYE!");
 	}
     
     //Desc: The UI for the selection Buy a Painting
@@ -55,11 +57,14 @@ public class UserInterface
                     + "\t       2. Masterwork\n"
                     + "\t       3. Other work\n"
                     + "\t       Enter number 1, 2 or 3");
+            while (!s.hasNext("[123]")) {
+                        System.out.println("Please enter a Number 1-3.");
+                        s.next(); 
+                        }
             response = UserInterface.getInt();
             if(response == 1) DetermineMasterpiecePrice.executeDetermineMasterpiecePrice();
             if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
             if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
-            else System.out.println("Please enter a number 1, 2 or 3");
         }
         
     }
@@ -68,13 +73,18 @@ public class UserInterface
     {
         clearScreen();
         Scanner s = new Scanner (System.in);
-        System.out.println ("\t             ADDz A FILE\n\n");
+        System.out.println ("\t             ADD A FILE\n\n");
         System.out.println ("\t         Oglesby Art Pricing System\n\n");
         System.out.println("\t      Which file would you like to add?\n"
                + "\t        1. ArtistFile\n"
                + "\t        2. AuctionFile");
+        while (!s.hasNext("[12]")) 
+        {
+            System.out.println("Please enter a Number 1 or 2.");
+            s.next(); 
+        }
         int response = s.nextInt();
-        if(response ==1) 
+        if(response ==1)
         {
             Artist a = new Artist();
             a.add();
@@ -84,7 +94,7 @@ public class UserInterface
          AuctionPainting auct = new AuctionPainting();
          auct.add();
         }
-    }
+}
    
 
     //Desc: Displays the menu for adding, updating or deleting files
@@ -92,6 +102,7 @@ public class UserInterface
     {
         clearScreen();
         boolean done = false;
+        Scanner s = new Scanner (System.in);
         System.out.println ("\t             CHANGE A FILE\n\n");
         System.out.println ("\t         Oglesby Art Pricing System\n\n");
         System.out.println("\t      Which file would you like to change?\n"
@@ -102,19 +113,24 @@ public class UserInterface
                 + "\t       5. Exit to Main Menu");
         while (!done)
         {
-            char response = getChar();
+            while (!s.hasNext("[12345]")) 
+            {
+                System.out.println("Please enter a Number 1-7.");
+                s.next(); 
+            }
+            int response = s.nextInt();
             switch (response)
             {
-                case '1':
+                case 1:
                     UpdateArtistFile.updateArtistFile();
                     break;
-                case '2':
+                case 2:
                     UpdateAuctionFile.updateAuctionPainting();
-                case '3':
+                case 3:
                     UpdateGalleryFile.updateBoughtPainting();
-                case '4':
+                case 4:
                     UpdateGalleryFile.updateSoldPainting();
-                case '5':
+                case 5:
                     done = true;
                     break;
                 case '\n':
@@ -135,6 +151,11 @@ public class UserInterface
                + "\t        1. ArtistFile\n"
                + "\t        2. GalleryPaintingFile\n"
                + "\t        3. AuctionFile");
+        while (!s.hasNext("[123]")) 
+        {
+            System.out.println("Please enter a Number 1-3.");
+            s.next(); 
+        }
         int response = s.nextInt();
         if(response ==1)
         {
@@ -164,6 +185,11 @@ public class UserInterface
                 + "\t       2. Paintings Sold In The Past Year Report\n"
                 + "\t       3. Paintings Exceeding Target Selling Price Report\n"
                 + "\t       Please enter a number 1, 2 or 3.");
+        while (!s.hasNext("[123]")) 
+        {
+            System.out.println("Please enter a Number 1-3.");
+            s.next(); 
+        }
         int response = 0;
         response = s.nextInt();
         if(response ==1)PurchasedReport.printReport();

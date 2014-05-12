@@ -167,9 +167,8 @@ public class UserInterface
         int response = 0;
         response = s.nextInt();
         if(response ==1)PurchasedReport.printReport();
-       /* if(response==2)
-            ProducePaintingsSoldInThePastYearReport.printReport();
-        if(response==3)
+        if(response==2)SoldReport.printReport();
+        /*if(response==3)
             ProducePaintingsExceedingTargetSellingPrice.printReport();**/
     }
     

@@ -65,6 +65,7 @@ public class UserInterface
             if(response == 1) DetermineMasterpiecePrice.executeDetermineMasterpiecePrice();
             if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
             if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
+            if(response ==4) break;
         }
         
     }
@@ -151,7 +152,7 @@ public class UserInterface
         System.out.println("\t      Which file would you like to delete from?\n"
                + "\t        1. ArtistFile\n"
                + "\t        2. GalleryPaintingFile\n"
-               + "\t        3. AuctionFile"
+               + "\t        3. AuctionFile\n"
                 + "\t       4. Return to main menu");
         while (!s.hasNext("[1234]")) 
         {
@@ -197,7 +198,7 @@ public class UserInterface
         response = s.nextInt();
         if(response ==1)PurchasedReport.printReport();
         if(response==2)SoldReport.printReport();
-     	if(response==3)ExceedingReport.printReport();
+        if(response==3)ExceedingReport.printReport();
     }
     
       public static char getChar()

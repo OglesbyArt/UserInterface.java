@@ -197,8 +197,7 @@ public class UserInterface
         response = s.nextInt();
         if(response ==1)PurchasedReport.printReport();
         if(response==2)SoldReport.printReport();
-        /*if(response==3)
-            ProducePaintingsExceedingTargetSellingPrice.printReport();**/
+     	if(response==3)ExceedingReport.printReport();
     }
     
       public static char getChar()

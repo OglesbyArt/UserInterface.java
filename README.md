@@ -45,23 +45,23 @@ public class UserInterface
     //Desc: The UI for the selection Buy a Painting
     public static void buyAPainting() //keep
     {
-        Scanner s = new Scanner(System.in);
         while (true)  
-        {   
+        {
+            Scanner s = new Scanner(System.in);
             clearScreen();
-            int response = 0;
             System.out.println ("\t             BUY A PAINTING\n\n");
             System.out.println ("\t         Oglesby Art Pricing System\n\n");
             System.out.println ("\t     What type of painting do you want to buy?\n"
                     + "\t       1. Masterpiece\n"
                     + "\t       2. Masterwork\n"
                     + "\t       3. Other work\n"
-                    + "\t       Enter number 1, 2 or 3");
-            while (!s.hasNext("[123]")) {
-                        System.out.println("Please enter a Number 1-3.");
+                    + "\t       4. Return to main menu"
+                    + "\t       Enter number 1, 2, 3 or 4");
+            while (!s.hasNext("[1234]")) {
+                        System.out.println("Please enter a Number 1-4.");
                         s.next(); 
                         }
-            response = UserInterface.getInt();
+            int response = s.nextInt();
             if(response == 1) DetermineMasterpiecePrice.executeDetermineMasterpiecePrice();
             if(response == 2) DetermineMasterworkPrice.executeDetermineMasterworkPrice();
             if (response == 3) DetermineOtherWorkPrice.executeDetermineOtherWorkPrice();
@@ -77,10 +77,11 @@ public class UserInterface
         System.out.println ("\t         Oglesby Art Pricing System\n\n");
         System.out.println("\t      Which file would you like to add?\n"
                + "\t        1. ArtistFile\n"
-               + "\t        2. AuctionFile");
-        while (!s.hasNext("[12]")) 
+               + "\t        2. AuctionFile\n"
+                + "\t       3. Return to main menu");
+        while (!s.hasNext("[123]")) 
         {
-            System.out.println("Please enter a Number 1 or 2.");
+            System.out.println("Please enter a Number 1, 2 or 3.");
             s.next(); 
         }
         int response = s.nextInt();
@@ -110,12 +111,12 @@ public class UserInterface
                 + "\t       2. AuctionPaintings\n"
                 + "\t       3. BoughtPaintings\n"
                 + "\t       4. SoldPaintings\n"
-                + "\t       5. Exit to Main Menu");
+                + "\t       5. Return to Main Menu");
         while (!done)
         {
             while (!s.hasNext("[12345]")) 
             {
-                System.out.println("Please enter a Number 1-7.");
+                System.out.println("Please enter a Number 1-5.");
                 s.next(); 
             }
             int response = s.nextInt();
@@ -150,10 +151,11 @@ public class UserInterface
         System.out.println("\t      Which file would you like to delete from?\n"
                + "\t        1. ArtistFile\n"
                + "\t        2. GalleryPaintingFile\n"
-               + "\t        3. AuctionFile");
-        while (!s.hasNext("[123]")) 
+               + "\t        3. AuctionFile"
+                + "\t       4. Return to main menu");
+        while (!s.hasNext("[1234]")) 
         {
-            System.out.println("Please enter a Number 1-3.");
+            System.out.println("Please enter a Number 1-4.");
             s.next(); 
         }
         int response = s.nextInt();
@@ -184,10 +186,11 @@ public class UserInterface
                 + "\t       1. Paintings Purchased In The Past Year Report\n"
                 + "\t       2. Paintings Sold In The Past Year Report\n"
                 + "\t       3. Paintings Exceeding Target Selling Price Report\n"
-                + "\t       Please enter a number 1, 2 or 3.");
-        while (!s.hasNext("[123]")) 
+                + "\t       4. Return to main menu"
+                + "\t       Please enter a number 1, 2, 3 or 4.");
+        while (!s.hasNext("[1234]")) 
         {
-            System.out.println("Please enter a Number 1-3.");
+            System.out.println("Please enter a Number 1-4.");
             s.next(); 
         }
         int response = 0;
@@ -321,7 +324,5 @@ public class UserInterface
        System.out.println("I/O exeption");
 
      }
-
-  }
-  
+  } 
 }

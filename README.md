@@ -72,34 +72,32 @@ public class UserInterface
 
     public static void addFiles()
     {
-        clearScreen();
-        Scanner s = new Scanner (System.in);
-        System.out.println ("\t             ADD A FILE\n\n");
-        System.out.println ("\t         Oglesby Art Pricing System\n\n");
-        System.out.println("\t      Which file would you like to add?\n"
-               + "\t        1. ArtistFile\n"
-               + "\t        2. AuctionFile\n"
-                + "\t       3. Return to main menu");
-        while (!s.hasNext("[123]")) 
+        while(true)
         {
-            System.out.println("Please enter a Number 1, 2 or 3.");
-            s.next(); 
-        }
-        int response = s.nextInt();
-        if(response ==1)
-        {
-            Artist a = new Artist();
-            a.add();
-        }
-        if(response ==2) 
-        {
-         AuctionPainting auct = new AuctionPainting();
-         auct.add();
-        }
-        if(response ==3) 
-        {
-         AuctionPainting auct = new AuctionPainting();
-         auct.add();
+            clearScreen();
+            Scanner s = new Scanner (System.in);
+            System.out.println ("\t             ADD A FILE\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println("\t      Which file would you like to add?\n"
+                   + "\t        1. ArtistFile\n"
+                   + "\t        2. AuctionFile\n"
+                   + "\t        3. Return to main menu");
+            while (!s.hasNext("[123]")) 
+            {
+                System.out.println("Please enter a Number 1, 2 or 3.");
+                s.next(); 
+            }
+            int response = s.nextInt();
+            if(response ==1)
+            {
+                Artist a = new Artist();
+                a.add();
+            }
+            if(response ==2) 
+            {
+             UpdateAuctionFile.addAuctionFile();
+            }
+            if(response ==3) break;//return again
         }
 }
    
@@ -107,19 +105,20 @@ public class UserInterface
     //Desc: Displays the menu for adding, updating or deleting files
     public static void changeFiles()
     {
-        clearScreen();
         boolean done = false;
-        Scanner s = new Scanner (System.in);
-        System.out.println ("\t             CHANGE A FILE\n\n");
-        System.out.println ("\t         Oglesby Art Pricing System\n\n");
-        System.out.println("\t      Which file would you like to change?\n"
-                + "\t       1. ArtistFile\n"
-                + "\t       2. AuctionPaintings\n"
-                + "\t       3. BoughtPaintings\n"
-                + "\t       4. SoldPaintings\n"
-                + "\t       5. Return to Main Menu");
         while (!done)
         {
+            clearScreen();
+            Scanner s = new Scanner (System.in);
+            System.out.println ("\t             CHANGE A FILE\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println("\t      Which file would you like to change?\n"
+                    + "\t       1. ArtistFile\n"
+                    + "\t       2. AuctionPaintings\n"
+                    + "\t       3. BoughtPaintings\n"
+                    + "\t       4. SoldPaintings\n"
+                    + "\t       5. Return to Main Menu");
+        
             while (!s.hasNext("[12345]")) 
             {
                 System.out.println("Please enter a Number 1-5.");
@@ -133,10 +132,13 @@ public class UserInterface
                     break;
                 case 2:
                     UpdateAuctionFile.updateAuctionPainting();
+                    break;
                 case 3:
                     UpdateGalleryFile.updateBoughtPainting();
+                    break;
                 case 4:
                     UpdateGalleryFile.updateSoldPainting();
+                    break;
                 case 5:
                     done = true;
                     break;
@@ -150,41 +152,41 @@ public class UserInterface
     }
     public static void deleteFiles()
     {
-        clearScreen();
-        Scanner s = new Scanner (System.in);
-        System.out.println ("\t             DELETE A FILE\n\n");
-        System.out.println ("\t         Oglesby Art Pricing System\n\n");
-        System.out.println("\t      Which file would you like to delete from?\n"
-               + "\t        1. ArtistFile\n"
-               + "\t        2. GalleryPaintingFile\n"
-               + "\t        3. AuctionFile\n"
-                + "\t       4. Return to main menu");
-        while (!s.hasNext("[1234]")) 
+        while(true)
         {
-            System.out.println("Please enter a Number 1-4.");
-            s.next(); 
+            clearScreen();
+            Scanner s = new Scanner (System.in);
+            System.out.println ("\t             DELETE A FILE\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println("\t      Which file would you like to delete from?\n"
+                   + "\t        1. ArtistFile\n"
+                   + "\t        2. GalleryPaintingFile\n"
+                   + "\t        3. AuctionFile\n"
+                    +"\t        4. Return to main menu");
+            while (!s.hasNext("[1234]")) 
+            {
+                System.out.println("Please enter a Number 1-4.");
+                s.next(); 
+            }
+            int response = s.nextInt();
+            if(response ==1)
+            {
+                Artist a = new Artist();
+                a.delete();
+            }
+            if(response ==2) 
+            {
+                SoldPainting sold = new SoldPainting();
+                sold.delete();
+            }
+            if (response ==3)
+            {
+                AuctionPainting auct = new AuctionPainting();
+                auct.delete();
+            }
+            if (response ==4) break;
         }
-        int response = s.nextInt();
-        if(response ==1)
-        {
-            Artist a = new Artist();
-            a.delete();
-        }
-        if(response ==2) 
-        {
-            SoldPainting sold = new SoldPainting();
-            sold.delete();
-        }
-        if (response ==3)
-        {
-            AuctionPainting auct = new AuctionPainting();
-            auct.delete();
-        }
-        if (response ==4)
-        {
-            AuctionPainting auct = new AuctionPainting();
-            auct.delete();
-        }
+
     }
     //Desc: Displays the menu for different reports
     public static void printReport()

@@ -90,8 +90,7 @@ public class UserInterface
             int response = s.nextInt();
             if(response ==1)
             {
-                Artist a = new Artist();
-                a.add();
+                UpdateArtistFile.addArtistFile();
             }
             if(response ==2) 
             {

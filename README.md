@@ -96,6 +96,11 @@ public class UserInterface
          AuctionPainting auct = new AuctionPainting();
          auct.add();
         }
+        if(response ==3) 
+        {
+         AuctionPainting auct = new AuctionPainting();
+         auct.add();
+        }
 }
    
 
@@ -175,30 +180,39 @@ public class UserInterface
             AuctionPainting auct = new AuctionPainting();
             auct.delete();
         }
+        if (response ==4)
+        {
+            AuctionPainting auct = new AuctionPainting();
+            auct.delete();
+        }
     }
     //Desc: Displays the menu for different reports
     public static void printReport()
     {
-        clearScreen();
-        Scanner s = new Scanner (System.in);
-        System.out.println ("\t             PRINT A REPORT\n\n");
-        System.out.println ("\t         Oglesby Art Pricing System\n\n");
-        System.out.println("\t      Which report would you like to print? \n"
-                + "\t       1. Paintings Purchased In The Past Year Report\n"
-                + "\t       2. Paintings Sold In The Past Year Report\n"
-                + "\t       3. Paintings Exceeding Target Selling Price Report\n"
-                + "\t       4. Return to main menu"
-                + "\t       Please enter a number 1, 2, 3 or 4.");
-        while (!s.hasNext("[1234]")) 
+        while(true)
         {
-            System.out.println("Please enter a Number 1-4.");
-            s.next(); 
+            clearScreen();
+            Scanner s = new Scanner (System.in);
+            System.out.println ("\t             PRINT A REPORT\n\n");
+            System.out.println ("\t         Oglesby Art Pricing System\n\n");
+            System.out.println("\t      Which report would you like to print? \n"
+                    + "\t       1. Paintings Purchased In The Past Year Report\n"
+                    + "\t       2. Paintings Sold In The Past Year Report\n"
+                    + "\t       3. Paintings Exceeding Target Selling Price Report\n"
+                    + "\t       4. Return to main menu"
+                    + "\t       Please enter a number 1, 2, 3 or 4.");
+            while (!s.hasNext("[1234]")) 
+            {
+                System.out.println("Please enter a Number 1-4.");
+                s.next(); 
+            }
+            int response = 0;
+            response = s.nextInt();
+            if(response ==1)PurchasedReport.printReport();
+            if(response==2)SoldReport.printReport();
+            if(response==3)ExceedingReport.printReport();
+            if(response ==4) break;
         }
-        int response = 0;
-        response = s.nextInt();
-        if(response ==1)PurchasedReport.printReport();
-        if(response==2)SoldReport.printReport();
-        if(response==3)ExceedingReport.printReport();
     }
     
       public static char getChar()

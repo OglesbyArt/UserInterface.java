@@ -55,7 +55,7 @@ public class UserInterface
                     + "\t       1. Masterpiece\n"
                     + "\t       2. Masterwork\n"
                     + "\t       3. Other work\n"
-                    + "\t       4. Return to main menu"
+                    + "\t       4. Return to main menu\n"
                     + "\t       Enter number 1, 2, 3 or 4");
             while (!s.hasNext("[1234]")) {
                         System.out.println("Please enter a Number 1-4.");
@@ -200,7 +200,7 @@ public class UserInterface
                     + "\t       1. Paintings Purchased In The Past Year Report\n"
                     + "\t       2. Paintings Sold In The Past Year Report\n"
                     + "\t       3. Paintings Exceeding Target Selling Price Report\n"
-                    + "\t       4. Return to main menu"
+                    + "\t       4. Return to main menu\n"
                     + "\t       Please enter a number 1, 2, 3 or 4.");
             while (!s.hasNext("[1234]")) 
             {

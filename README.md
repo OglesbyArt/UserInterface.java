@@ -10,10 +10,10 @@ public class UserInterface
 	//Desc: Constructor for the User Interface
     public UserInterface()
 	{
-		clearScreen();
 		int response = 0;
 		while (true)
                 {
+                    clearScreen();
                     BoughtPainting b = new BoughtPainting();
                     System.out.println ("\t             WELCOME -- MAIN MENU\n\n");
                     System.out.println ("\t         Oglesby Art Pricing System\n\n");
